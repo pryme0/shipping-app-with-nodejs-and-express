@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="description" content="online shiping app" />
+    <meta name="author" content="joseph oboci" />
+    <title>online shiping software</title>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
+    <!-- icons -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- bootstrap -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- style -->
+    <link rel="stylesheet" href="/css/pages/extra_pages.css">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="http://radixtouch.in/templates/admin/smart/source/assets/img/favicon.ico" />
+</head>
+
+<body>
+    <div class="form-title">
+        <h1>Registration Form</h1>
+    </div>
+    <!-- Login Form-->
+    <div class="login-form text-center">
+
+
+        <div class=" form-group">
+            <h2>Create Staff account</h2>
+            <div>
+                <div class=" alert alert-danger ">
+                    <%if(errors.length > 0 ){%>
+                        <ul class="list-group">
+
+                            <%errors.forEach(error=>{ %>
+
+                                <li class=" list-unstyled text-danger" data-dismiss="alert" aria-label="close">
+                                    <%=error %>
+                                </li>
+
+                                <% })%>
+                                    <% }%>
+
+                </div>
+
+
+                <form class="form" action="staffregistration" method="POST">
+                    <input class="form-control" type="text" name="firstname" placeholder="firstname" />
+                    <input class="form-control" type="text" name="lastname" placeholder="lastname" />
+
+                    <select class=" form-control" name="department">
+                        <option class=" form-control" value="Accounting">Accounting</option>
+                        <option class=" form-control" value="Inventory">Inventory</option>
+                        <option class=" form-control" value="Admin">Admin</option>
+                      </select>
+                    </br>
+                    <input class="form-control" type="email" name="email" placeholder="Email Address" />
+                    <input class="form-control" type="password" name="password" placeholder="Password" />
+                    <input class="form-control" type="password" name="password2" placeholder="Verify Password" />
+
+                    <input class="form-control" type="text" name="phonenumber" placeholder="Phone Number" />
+                    <button>Register</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!-- start js include path -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+
+    <script src="/js/pages/extra-pages/pages.js"></script>
+    <!-- end js include path -->
+</body>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+</html>

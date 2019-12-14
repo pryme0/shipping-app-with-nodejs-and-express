@@ -1,5 +1,437 @@
-<h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Welcome
-    <%= name %>
-</p>
-<a href="/users/logout" class="btn btn-secondary">Logout</a> © 2019 team kigali
+<html>
+
+<head>
+    <title>
+
+    </title>
+    <link rel=" stylesheet" type="style/css" href="/bootstrap2/css/bootstrap.min.css">
+</head>
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="description" content="online shiping app" />
+    <meta name="author" content="joseph oboci" />
+    <title>online shiping software</title>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
+    <!-- icons -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- bootstrap -->
+    <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- style -->
+    <link rel="stylesheet" href="/css/pages/extra_pages.css">
+    <!-- favicon -->
+</head>
+
+<body>
+    <div class="container">
+        <h2>Account Dashboard</h2>
+        <h3>Welcome
+            <%= use.firstname + ' ' + use.lastname %>
+        </h3>
+        <h4><a align="right" style="color:white" href="/logout">Logout</a></h4>
+
+        <%if (paymentError){%>
+            <div class=" alert alert-danger ">
+                <ul class="list-group">
+                    <li class=" list-unstyled text-danger" data-dismiss="alert" aria-label="close">
+                        <%= paymentError %>
+                    </li>
+            </div>
+            <%}%>
+
+
+
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#profile">View profile</a></li>
+                    <li id="message"><a data-toggle="tab" href="#message">Messages</a></li>
+                    <li><a data-toggle="tab" href="#ship">Ship Goods</a></li>
+                    <li><a data-toggle="tab" href="#trackgoods">Track Goods</a></li>
+                    <li><a data-toggle="tab" href="#transaction">View Transactions</a></li>
+
+                </ul>
+
+
+                <div class="tab-content">
+                    <div id="profile" class="tab-pane fade in active">
+                        <h3 class=" header">Profile</h3>
+                        <div class="well well-sm" style=" color:black">
+
+                            <%if(updateError.length > 0 ){%>
+                                <div class=" alert alert-danger ">
+                                    <ul class="list-group">
+
+                                        <%updateError.forEach(uerror=>{ %>
+
+                                            <li class=" list-unstyled text-danger" data-dismiss="alert" aria-label="close">
+                                                <%=uerror %>
+                                            </li>
+
+                                            <% })%>
+                                </div>
+                                <% }%>
+
+
+                                    <form class=" form-horizontal" action="updateuser" method="POST">
+                                        <div class=" form-group">
+                                            <Label class="col-sm-2" for="firstname">Firstname</Label>
+                                            <input class=" col-sm-8" type="text" name="firstname" value="<%= use.firstname%>">
+                                        </div>
+                                        <div class=" form-group">
+                                            <Label class=" col-sm-2" for="lastname">Lastname</Label>
+                                            <input class=" col-sm-8" type="text" name="lastname" value="<%= use.lastname%>">
+                                        </div>
+                                        <div class=" form-group">
+                                            <Label class=" col-sm-2" for="email">Email</Label>
+                                            <input class=" col-sm-8" type="text" name="email" value="<%= use.email%>">
+                                        </div>
+                                        <div class=" form-group">
+                                            <Label class=" col-sm-2" for="phonenumber">Phonenumber</Label>
+                                            <input class=" col-sm-8" type="text" name="phonenumber" value="<%= use.phonenumber%>">
+                                        </div>
+                                        <div class=" form-group">
+                                            <Label class=" col-sm-2" for="companyname">Companyname:</Label>
+                                            <input class=" col-sm-8" type="text" name="companyname" value="<%= use.companyname%>">
+                                        </div>
+                                        <div class=" form-group">
+                                            <Label class=" col-sm-2" for="goodtype">Goodtype</Label>
+                                            <input class=" col-sm-8" type="text" name="goodtype" value="<%= use.goodtype%>">
+                                        </div>
+                                        <div class=" form-group">
+                                            <Label class=" col-sm-2" for="shipnumber">Shipnumber</Label>
+                                            <input class=" col-sm-8" type="text" name="shipnumber" value="<%= use.shipnumber%>">
+                                        </div>
+                                        <div class=" form-group">
+                                            <button class=" btn btn-primary "> update</button>
+                                        </div>
+                                    </form>
+
+                        </div>
+
+
+                        <div id="menu3" class="tab-pane fade">
+                            <h3>Menu 3</h3>
+                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                    </div>
+                    <div id="ship" class="tab-pane fade">
+                        <h3>Ship Goods</h3>
+
+                        <%if(errors.length > 0 ){%>
+                            <div class=" alert alert-danger ">
+                                <ul class="list-group">
+
+                                    <%errors.forEach(error=>{ %>
+
+                                        <li class=" list-unstyled text-danger" data-dismiss="alert" aria-label="close">
+                                            <%=error %>
+                                        </li>
+
+                                        <% })%>
+
+                            </div>
+                            <% }%>
+
+                                <div class=" form-group">
+                                    <form class=" form" action="shiprequest" method="POST">
+                                        <div class=" form-label-stripped"><label for=" goods">Goods</label>
+                                            <input class=" form-control" type="text" name="goods" placeholder=" enter the name of your goods">
+                                        </div>
+                                        <div class=" form-label-stripped"><label for="quantity">Quantity</label>
+                                            <input class=" form-control" type="text" name="quantity" placeholder=" enter the weight in tons">
+                                        </div>
+                                        <div class=" form-label-stripped">
+                                            <label for="quantity">Select weight unit</label>
+                                            <select class=" form-control" name="unitofweight">
+                                                    <option value="kilogram">kilogram</option>
+                                                    <option value="tons">tons</option>
+                                            </select>
+                                        </div>
+                                        <div class=" form-label-stripped"><label for="quantity">Shipping from</label>
+                                            <input class=" form-control" type="text" name="shipfrom" placeholder=" enter the Location the goods is shipping from">
+                                        </div>
+                                        <div class=" form-label-stripped"><label for="decscription">Delivery Address</label>
+                                            <input class=" form-control" type="text" name="destination" placeholder=" enter the destination">
+                                        </div>
+                                        <div class=" form-label-stripped"><label for="decscription">Description</label>
+                                            <textarea class=" form-control" name="description" placeholder=" enter a brief description of the goods"></textarea>
+                                        </div>
+                                        <button class="btn btn-lg btn-primary">Ship</button>
+                                    </form>
+                                </div>
+                    </div>
+                    <div id="message" class="tab-pane fade">
+
+                        <div class=" alert alert-danger ">
+                            <ul class="list-group">
+
+
+                                <li class=" list-unstyled text-danger" data-dismiss="alert" aria-label="close">
+                                    <%= deletemess %>
+                                </li>
+
+
+
+                        </div>
+
+
+                        <table class="table table-condensed table-bordered table-striped">
+                            <thead>
+                                <tr style="color:black">
+                                    <th>SN</th>
+                                    <th>Status</th>
+                                    <th>Description</th>
+                                    <th>Cost</th>
+                                    <th>Id</th>
+                                    <th>Time of request</th>
+
+                            </thead>
+                            <% let messagecount = 1%>
+                                <% Message.forEach(mess=>{%>
+                                    <% messageid =  mess._id  %>
+
+
+                                        <tbody style="color:black">
+                                            <tr>
+                                                <td>
+                                                    <%= messagecount++  %>
+                                                </td>
+                                                <td>
+                                                    <%= mess.status  %>
+                                                </td>
+                                                <td>
+                                                    <%= mess.description %>
+                                                </td>
+                                                <td>
+                                                    <%= mess.cost %>
+                                                </td>
+                                                <td>
+                                                    <%= mess.shipmentid %>
+                                                </td>
+
+
+                                                <td>
+                                                    <%= mess.date %>
+                                                </td>
+                                                <td>
+                                                    <button class=" btn btn-primary"> <a style="color: white;" href="/payment/<%= use._id %>/<%= mess.shipmentid %>/<%= messageid %>">click to make payment</a></button>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-danger"><a href="/deletemessage/<%= mess._id %>">Delete</a></button>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                        <% })%>
+                        </table>
+
+                    </div>
+                    <div id="transaction" class="tab-pane fade">
+
+                        <div class=" alert alert-danger ">
+                            <ul class="list-group">
+
+
+                                <li class=" list-unstyled text-danger" data-dismiss="alert" aria-label="close">
+                                    <%= deletemess %>
+                                </li>
+
+
+
+                        </div>
+
+
+                        <table class="table table-condensed table-bordered table-striped">
+                            <thead>
+                                <tr style="color:black">
+                                    <th>SN</th>
+                                    <th>Name</th>
+                                    <th>Payment Reference</th>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                    <th>Quantity</th>
+                                    <th>Payment status</th>
+                                    <th>Date of Payment</th>
+
+                            </thead>
+                            <% let paycount = 1%>
+                                <% Payment.forEach(paye=>{%>
+
+
+                                    <tbody style="color:black">
+                                        <tr>
+                                            <td>
+                                                <%= paycount++ %>
+                                            </td>
+
+                                            <td>
+                                                <%= paye.payee.firstname + ' ' +  paye.payee.lastname  %>
+                                            </td>
+                                            <td>
+                                                <%= paye._id   %>
+                                            </td>
+                                            <td>
+                                                <%= paye.paymentfor   %>
+                                            </td>
+                                            <td>
+                                                <%= paye.amount  %>
+                                            </td>
+                                            <td>
+                                                <%= paye.quantity  %>
+                                            </td>
+                                            <td>
+                                                <%= paye.status  %>
+                                            </td>
+                                            <td>
+                                                <%= paye.date   %>
+                                            </td>
+
+                                            <td>
+                                                <button class=" btn btn-primary"> <a style="color: white;" href="/reciept/<%=paye._id %>">Print Reciept</a></button>
+                                            </td>
+
+
+
+                                        </tr>
+                                    </tbody>
+                                    <% })%>
+                        </table>
+
+                    </div>
+                    <div id="trackgoods" class="tab-pane fade">
+
+                        <div class=" alert alert-danger ">
+                            <ul class="list-group">
+
+
+                                <li class=" list-unstyled text-danger" data-dismiss="alert" aria-label="close">
+                                    <%=  %>
+                                </li>
+
+
+
+                        </div>
+
+
+                        <table class="table table-condensed table-bordered table-striped">
+                            <thead>
+                                <tr style="color:black">
+                                    <th>SN</th>
+                                    <th>Name</th>
+                                    <th>Payment Reference</th>
+                                    <th>Goods</th>
+                                    <th>Description</th>
+                                    <th>Quantity</th>
+                                    <th>Shipping From</th>
+                                    <th>Destination</th>
+                                    <th>Shipment Status</th>
+                                    <th>Expected Delivery Date</th>
+                                    <th>Current Location</th>
+                                    <th>Delivery Status</th>
+
+                            </thead>
+                            <% let trackcount = 1%>
+                                <% ship.forEach(shipment=>{%>
+
+
+                                    <tbody style="color:black">
+                                        <tr>
+                                            <td>
+                                                <%= trackcount++ %>
+                                            </td>
+
+                                            <td>
+                                                <%= shipment.requester.firstname + ' ' +  shipment.requester.lastname  %>
+                                            </td>
+                                            <td>
+                                                <%= shipment._id   %>
+                                            </td>
+                                            <td>
+                                                <%= shipment.goods   %>
+                                            </td>
+                                            <td>
+                                                <%= shipment.description  %>
+                                            </td>
+
+                                            <td>
+                                                <%= shipment.quantity  %>
+                                            </td>
+                                            <td>
+                                                <%= shipment.shipfrom   %>
+                                            </td>
+
+                                            <td>
+                                                <%= shipment.destination   %>
+                                            </td>
+                                            <td>
+                                                <%= shipment.shipmentstatus   %>
+                                            </td>
+                                            <td>
+                                                <%= shipment.expecteddelivery   %>
+                                            </td>
+                                            <td>
+                                                <%= shipment.currentlocation   %>
+                                            </td>
+                                            <td>
+                                                <%= shipment.deliverystatus   %>
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                    <% })%>
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+                <!-- start js include path -->
+                <script src="/plugins/jquery/jquery.min.js"></script>
+                <script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+                <script src="/js/pages/extra-pages/pages.js"></script>
+                <!-- end js include path -->
+</body>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+</html <script src="/bootstrap2/js/jquery-3.2.1.min.js"></script>
+<script>
+    let mess = ''
+    const upd = (l) => {
+        let xmlhttp = new XMLHttpRequest
+        xmlhttp.onReadyState = () => {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("message").addEventListener('click') = xmlhttp.responseText
+                xmlhttp.open("GET", "dashboard" + str, true);
+                xmlhttp.send();
+            }
+
+
+        }
+    }
+
+    updatepage = () => {
+        let mess = document.getElementById("message")
+        mess.addEventListener('click', upd)
+    }
+
+
+    updatepage()
+</script>
+<script src="/bootstrap2/js/bootstrap.min.js">
+</script>
+
+
+</body>
+
+</html>

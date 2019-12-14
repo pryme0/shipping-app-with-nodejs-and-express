@@ -1,15 +1,12 @@
-module.exports = {
-    ensureAuthenticated: function(req, res, next) {
-        if (req.isAuthenticated()) {
-            return next();
+const User = require('../models/Users')
+module.exports = (req, res, next) => {
+
+    User.findById(req.session.userId, (error, user) => {
+        if (error || !user) {
+            return res.redirect(req.headers.referer)
         }
-        req.flash('error_msg', 'Please log in to view that resource');
-        res.redirect('/users/login');
-    },
-    forwardAuthenticated: function(req, res, next) {
-        if (!req.isAuthenticated()) {
-            return next();
-        }
-        res.redirect('/dashboard');
-    }
-};
+        req.session.username = User.username
+        next()
+    })
+
+}

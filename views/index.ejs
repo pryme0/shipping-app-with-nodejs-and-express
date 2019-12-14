@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="description" content="online shiping app" />
+    <meta name="author" content="joseph obochi" />
+    <title>online shiping software</title>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
+    <!-- icons -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- bootstrap -->
+    <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- style -->
+    <link href="/css/clean-blog.min.css" rel="stylesheet" type="text/css">
+
+    <!-- favicon -->
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>                        
+                </button>
+                <a class="navbar-brand btn btn danger" href="#" style="color:red;">Zim Shipping Company</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <%if(userId){%>
+
+                        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                        <% } else {%>
+                            <li><a href="/register"><span class="glyphicon glyphicon-user align-right"></span> Sign Up</a></li>
+                            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            <%}%>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead bg-parallaxs" style="background-image: url('images/ship4.jpg');border-bottom: 0px;">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-10 mx-auto">
+
+                    <div class="site-heading">
+                        <h1>Ship It The Right Way With Zim</h1>
+                        <span class="subheading"><button class="btn btn-primary"><a href="/register">Get Started</a></button></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <h3 class="content-title">About us</h3>
+        <hr style=" width: 50px;height: 3px;background-color: #34c6d3;border-style: solid;border-width: 0px;">
+        <div class="col-md-5 bg-parallax container" style="background-color:cornsilk">
+            Zim shipping company is an international shipping company known the world that specializez in the shipment of goods from one end of the globe to the other With Zim shipping company you are assured of the prompt and safe delivery of your goods We Leverage
+            the boundless opourtunites provided by the best of present da technology to ensure that your goods arive safely and promptly.Some of our International partners include Fedex And DHL who have relied on our services for the seamless running
+            of thier business........... <br>
+            <h4>Ship with zim today and you will not regret it</h4>
+        </div>
+        <div class="col-md-6">
+            <img class="img-circle" src="/images/ship8.jpeg">
+
+        </div>
+
+    </div>
+    <div id="testimonies" class="container">
+        <div class="content-title ">
+            <h3>Testimonies</h3>
+            <div class=" title-underline "></div>
+        </div>
+        <div class="row ">
+            <div class="col-md-3 ">
+                <img class="img-circle " src="images/user6.jpg ">
+                <div>
+                    <p id="test-name ">Paul Smith</p>
+                    <p>Totally love the website..thanks guys</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 ">
+                <img class="img-circle " src="images/user5.jpg ">
+                <div>
+                    <p id="test-name ">Katherine Jones</p>
+                    <p>"Amazing how the goods were handled ..first of its kind "</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 ">
+                <img class="img-circle " src="images/user3.jpg ">
+                <div>
+                    <p id="test-name ">Mitchelle Ed</p>
+                    <p>"Prompt delivery is the key word"</p>
+                </div>
+
+            </div>
+            <div class="col-md-3 ">
+                <img class="img-circle " src="images/user2.jpg ">
+                <div>
+                    <p id="test-name ">Precious Whitefeild</p>
+                    <p>"Zim shipping company shipping is made easy "</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    </div>
+    <div id="contact" style="background-color: #33CCFF">
+        <div class="container" style="background-color: #33CCFF">
+            <h3 class="content-title">Contact Us</h3>
+            <div class="title-underline"></div>
+            <div class="col-md-6" style="background-color: #33CCFF">
+                <div class="col-md-4" style="background-color: #33CCFF">
+                    <h3 style="opacity: 1"><b>HEAD OFFICE</b></h3>
+                    <br>
+                    <p><b>Zim International Head Office Chicago</b></p>
+                </div>
+
+                <h3><b>CONNECT</b></h3>
+                <br>
+                <a href="#" class="fa fa-twitter x2"></a>
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-google"></a>
+                <a href="#" class="fa fa-youtube"></a>
+
+            </div>
+            <div class="col-md-6" style="background-color: #33CCFF">
+                <div class="form-group has-success has-feedback">
+                    <div style="background-color: #33CCFF">
+                        EMAIL: <input type="text" name="email" class="form-control" id="inputSuccess">
+                        <br> Message: <input type="text" name="message" class="form-control" id="inputSuccess">
+                        <br>
+                        <input type="submit" class="btn btn-sucess">
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- start js include path -->
+    <script src="/plugins/jquery/jquery.min.js "></script>
+    <script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js "></script>
+    <script src="/js/pages/extra-pages/pages.js "></script>
+    <!-- end js include path -->
+</body>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+</html>

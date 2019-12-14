@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="description" content="online shiping app" />
+    <meta name="author" content="joseph oboci" />
+    <title>online shiping software</title>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
+    <!-- icons -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- bootstrap -->
+    <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- style -->
+    <link rel="stylesheet" href="/css/pages/extra_pages.css">
+    <!-- favicon -->
+</head>
+
+<body>
+    <div class="container">
+        <h2>Admin</h2>
+        <h4>
+            <%= fullname %>
+                <%= employeenum %>
+        </h4>
+        <h4><a align="right" style="color:white" href="/logout">Logout</a></h4>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#profile">Home</a></li>
+            <li id="use"><a data-toggle="tab" href="#users">View users</a></li>
+            <li><a data-toggle="tab" href="#staff">View staff</a></li>
+            <li><a data-toggle="tab" href="#createstaff">Create Staff</a></li>
+            <li><a data-toggle="tab" href="#request">View Shipment requests</a></li>
+            <li><a data-toggle="tab" href="#track">Track Shipments</a></li>
+            <li><a data-toggle="tab" href="#revenue">View Account</a></li>
+
+        </ul>
+
+        <div class="tab-content">
+            <div id="profile" class="tab-pane fade in active">
+                <div class="well well-sm" style=" color:black">
+
+
+                    <form class=" form-horizontal" action="updatestaff" method="POST">
+                        <div class=" form-group">
+                            <Label class="col-sm-2" for="firstname">Firstname</Label>
+                            <input class=" col-sm-8" type="text" name="firstname" value="<%= Staff.firstname%>">
+                        </div>
+                        <div class=" form-group">
+                            <Label class=" col-sm-2" for="lastname">Lastname</Label>
+                            <input class=" col-sm-8" type="text" name="lastname" value="<%= Staff.lastname%>">
+                        </div>
+                        <div class=" form-group">
+                            <Label class=" col-sm-2" for="email">Email</Label>
+                            <input class=" col-sm-8" type="text" name="email" value="<%= Staff.email%>">
+                        </div>
+                        <div class=" form-group">
+                            <Label class=" col-sm-2" for="email">Department</Label>
+                            <input class=" col-sm-8" type="text" name="department" value="<%= Staff.department%>">
+                        </div>
+                        <div class=" form-group">
+                            <Label class=" col-sm-2" for="phonenumber">Employee Number</Label>
+                            <input class=" col-sm-8" type="text" name="employeenumber" value="<%= Staff.employeenumber%>">
+                        </div>
+                        <div class=" form-group">
+                            <Label class=" col-sm-2" for="phonenumber">Phonenumber</Label>
+                            <input class=" col-sm-8" type="text" name="phonenumber" value="<%= Staff.phonenumber%>">
+                        </div>
+                        <div class=" form-group">
+                            <button class=" btn btn-primary "> update</button>
+                        </div>
+                    </form>
+                    <form class="form" action="updatestaffpassword" method="POST">
+                        <h3>UPDATE PASSWORD</h3>
+                        <div class=" form-group">
+                            <input type="password" class="form-control" name="password" placeholder="enter new password">
+                        </div>
+                        <div class="form-group">
+                            <button class="form-control btn-danger">Update Password</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div id="users" class="tab-pane fade">
+                <table id="table" class="table table-condensed table-bordered table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <th>SN</th>
+                            <th>Fullname</th>
+                            <th>Company Name</th>
+                            <th>Email</th>
+                            <th>Goods Type</th>
+                            <th>Phone Number</th>
+                        </tr>
+                    </thead>
+                    <% let usercount = 1%>
+                        <% //users.forEach(use=>{%>
+                            <tbody style="color:black">
+                                <tr>
+                                    <td>
+                                        <%= //usercount++ %>
+                                    </td>
+                                    <td class="username">
+                                        <%= //use.firstname + ' ' + use.lastname %>
+                                    </td>
+                                    <td class="compname">
+                                        <%= //use.companyname %>
+                                    </td>
+                                    <td class="useremail">
+                                        <%= //use.email %>
+                                    </td>
+                                    <td class="usergoodtype">
+                                        <%= //use.goodtype %>
+                                    </td>
+                                    <td class="userphone">
+                                        <%= //use.phonenumber %>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger"><a href="/userdelete/<%=// use._id %>">Delete</a></button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                            <% //})%>
+                </table>
+            </div>
+
+            <div id="staff" class="tab-pane fade">
+                <table class="table table-condensed table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>SN</th>
+                            <th>Fullname</th>
+                            <th>Employee Number</th>
+                            <th>Email</th>
+                            <th>Department</th>
+                            <th>Phone Number</th>
+                        </tr>
+                    </thead>
+                    <% let staffcount = 1%>
+                        <% staffs.forEach(staff=>{%>
+                            <tbody style="color:black">
+                                <tr>
+                                    <td>
+                                        <%= staffcount++ %>
+                                    </td>
+                                    <td>
+                                        <%= staff.firstname + ' ' + staff.lastname %>
+                                    </td>
+                                    <td>
+                                        <%= staff.employeenumber %>
+                                    </td>
+                                    <td>
+                                        <%= staff.email %>
+                                    </td>
+                                    <td>
+                                        <%= staff.department %>
+                                    </td>
+                                    <td>
+                                        <%= staff.phonenumber %>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger"><a href="/delete/<%= staff._id %>">Delete</a></button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                            <% })%>
+                </table>
+
+                <ul>
+                    <li>
+                        <p class="local"></p>
+                    </li>
+                </ul>
+            </div>
+            <div id="createstaff" class="tab-pane fade">
+                <div class=" form-group">
+                    <h2>Create Staff account</h2>
+                    <div>
+                        <div class=" alert alert-danger ">
+                            <%if(errors.length > 0 ){%>
+                                <ul class="list-group">
+
+                                    <%errors.forEach(error=>{ %>
+
+                                        <li class=" list-unstyled text-danger" data-dismiss="alert" aria-label="close">
+                                            <%=error %>
+                                        </li>
+
+                                        <% })%>
+                                            <% }%>
+
+                        </div>
+
+
+                        <form class="form" action="staffregistration" method="POST">
+                            <input class="form-control" type="text" name="firstname" placeholder="firstname" />
+                            <input class="form-control" type="text" name="lastname" placeholder="lastname" />
+
+                            <select class=" form-control" name="department">
+                                        <option class=" form-control" value="Accounting">Accounting</option>
+                                        <option class=" form-control" value="Inventory">Inventory</option>
+                                        <option class=" form-control" value="Admin">Admin<option>
+                                      </select>
+                            </br>
+                            <input class="form-control" type="email" name="email" placeholder="Email Address" />
+                            <input class="form-control" type="password" name="password" placeholder="Password" />
+                            <input class="form-control" type="password" name="password2" placeholder="Verify Password" />
+
+                            <input class="form-control" type="text" name="phonenumber" placeholder="Phone Number" />
+                            <button class=" btn btn-default">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="request" class="tab-pane fade">
+                <div class=" alert alert-danger ">
+                    <%if(messError.length > 0 ){%>
+                        <ul class="list-group">
+
+                            <%messError.forEach(messagerror=>{ %>
+
+                                <li class=" list-unstyled text-danger" data-dismiss="alert" aria-label="close">
+                                    <%=messagerror %>
+                                </li>
+
+                                <% })%>
+                                    <% }%>
+
+                </div>
+                <table class="table table-condensed table-bordered table-striped">
+                    <thead>
+                        <tr style="color:black">
+                            <th>SN</th>
+                            <th>Fullname</th>
+                            <th>Company Name</th>
+                            <th>Email</th>
+                            <th>Goods</th>
+                            <th>Quantity</th>
+                            <th>Cost</th>
+                            <th>Destination</th>
+                            <th>Goods Description</th>
+                        </tr>
+                    </thead>
+                    <% let shipcount = 1%>
+                        <% Ship.forEach(shi=>{%>
+                            <% const identity = shi._id %>
+
+
+                                <tbody style="color:black">
+                                    <tr>
+
+                                        <td>
+                                            <%= shipcount++ %>
+                                        </td>
+                                        <td>
+                                            <%= shi.requester.firstname + ' ' + shi.requester.lastname %>
+                                        </td>
+                                        <td>
+                                            <%= shi.requester.companyname %>
+                                        </td>
+                                        <td>
+                                            <%=shi.requester.email %>
+                                        </td>
+                                        <td>
+                                            <%= shi.goods%>
+                                        </td>
+                                        <td>
+                                            <%= shi.quantity %>
+                                        </td>
+                                        <td>
+                                            <%= shi.cost %>
+                                        </td>
+                                        <td>
+                                            <%= shi.destination %>
+                                        </td>
+                                        <td>
+                                            <%= shi.description %>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-default"><a href="/requestapprove/<%= identity %>/<%= shi.requester._id %>">Approve</a></button>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-danger"><a href="/requestdecline/<%= shi.requester._id %>">Decline</a></button>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-danger"><a href="/deleterequest/<%= shi._id %>">Delete</a></button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                                <% })%>
+                </table>
+            </div>
+            <div id="track" class="tab-pane fade">
+
+
+                <div class=" alert alert-danger ">
+                    <ul class="list-group">
+
+
+                        <li class=" list-unstyled text-danger" data-dismiss="alert" aria-label="close">
+                            <%=  %>
+                        </li>
+
+
+
+                </div>
+
+
+                <table class="table table-condensed table-bordered table-striped">
+                    <thead>
+                        <tr style="color:black">
+                            <th>SN</th>
+                            <th>Name</th>
+                            <th>Payment Reference</th>
+                            <th>Goods</th>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th>Destination</th>
+                            <th>Shipment Status</th>
+                            <th>Expected Delivery Date</th>
+                            <th>Current Location</th>
+                            <th>Delivery Status</th>
+
+
+                    </thead>
+                    <% let trackcount = 1%>
+                        <% Ship.forEach(shipment=>{%>
+                            <%{%>
+
+                                <tbody style="color:black">
+                                    <tr>
+                                        <td>
+                                            <%= trackcount++ %>
+                                        </td>
+
+                                        <td>
+                                            <%= shipment.requester.firstname + ' ' +  shipment.requester.lastname  %>
+                                        </td>
+                                        <td>
+                                            <%= shipment._id   %>
+                                        </td>
+                                        <td>
+                                            <%= shipment.goods   %>
+                                        </td>
+                                        <td>
+                                            <%= shipment.description  %>
+                                        </td>
+
+                                        <td>
+                                            <%= shipment.quantity  %>
+                                        </td>
+
+                                        <td>
+                                            <%= shipment.destination   %>
+                                        </td>
+                                        <td>
+                                            <%= shipment.shipmentstatus   %>
+                                        </td>
+                                        <td>
+                                            <%= shipment.expecteddelivery   %>
+                                        </td>
+                                        <td>
+                                            <%= shipment.currentlocation   %>
+                                        </td>
+                                        <td>
+                                            <%= shipment.deliverystatus   %>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Update Details</button>
+                                        </td>
+                                        <td>
+                                            <button class=" btn btn-danger"> <a style="color: white;" href="/paydel/<%= shipment._id   %>">Delete</a></button>
+                                        </td>
+
+
+                                    </tr>
+                                </tbody>
+                                <%}%>
+                </table>
+
+
+
+            </div>
+            <div id="revenue" class="tab-pane fade">
+                <h3>Revenue</h3>
+                <div>
+                    <h3>Total Revenue :&nbsp&nbsp
+                        <%= totalRevenue %>
+                    </h3>
+
+                </div>
+            </div>
+            <div style="color:black" id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Update shipment details</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form" method="POST" action="updateshipment/<%=shipment._id %>">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input class="form-control" type="text" name="name" value=" <%= shipment.requester.firstname + ' ' +  shipment.requester.lastname  %>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Goods</label>
+                                    <input class="form-control" type="text" name="goods" value=" <%= shipment.goods  %>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Description</label>
+                                    <input class="form-control" type="text" name="description" value=" <%= shipment.description  %>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Quantity</label>
+                                    <input class="form-control" type="text" name="quantity" value=" <%= shipment.quantity  %>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Shipment Status</label>
+                                    <input class="form-control" type="text" name="shipmentstatus" value=" <%= shipment.status  %>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Expected Delivery Date</label>
+                                    <input class="form-control" type="datetime-local" name="expecteddelivery">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Ship Number</label>
+                                    <input class="form-control" type="text" name="shipnumber" value=" <%= shipment.shipnumber %>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Current Location</label>
+                                    <input class="form-control" type="text" name="currentlocation" value=" <%= shipment.currentlocation %>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Delivery Status</label>
+                                    <input class="form-control" type="text" name="deliverystatus" value=" <%= shipment.deliverystatus %>">
+                                </div>
+                                <button class=" btn btn-primary">Update</button>
+
+
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <% })%>
+        </div>
+    </div>
+
+
+
+
+    <!-- start js include path -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+
+    <script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/js/pages/extra-pages/pages.js"></script>
+    <!-- end js include path -->
+</body>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+</html>

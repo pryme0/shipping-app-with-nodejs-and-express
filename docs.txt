@@ -1,0 +1,82 @@
+Online Shipping system
+
+REQUITEMENTS TO RUN THE SYSTEM
+-Windows operating system
+-the user should install nodejs v10  
+-the user should install git bash 
+-the user shoul have mongodb installed
+
+This is an online shipping system desinged using nodejs
+-The system is composed of the model ,view ,controller modules
+-the model module contains all the collections(database tables used in the system)
+-the controller contains the code that controls the behaiour of the system
+-the views contains the various pages the system is composed of
+
+Colections 
+-The system uses mongodb for storing data .Mongodb is a non-relational database that stores data in collections in json format
+mongodb was chosen for the project because of its robustness and compatability with nodejs
+the collections in the system includ:
+Users collection:for storing user data
+fields include:firstname,lastname,goodstype,companyname,email,phonenumber,password,date
+Payment collection: for storing payment data 
+fields include:Amount, quantity ,goods ,payment for,payment method,payee,shipment id ,date,status
+Shipment collection :for storing shiping data
+fields include:requester ,goods ,unitofweight,shipfrom ,shipnumber,quantity ,shipment status,expecteddelivery,deliverystatus ,current location,cost destination description ,sentat
+
+Message collection:for storing messsges
+feilds include:requester description shipment id,,status,cost,date
+Shipprice collection: for storing shipping prices
+fields include:pricefortons,priceforkg,date
+Staff collection: for storing staff information
+fields include:firstname,lastname,employeenumber ,email,department,phonenumber ,password
+
+Views
+index:the apps landing pages
+dashboard:user dashboard where users can send shipping requests,check if thier requests have been approved ,pay for ship ments n print reciepts
+admin:where the asdmin can view user and staff, create staff acount, view and approve shipping requests ,update shiiping records to show current location of goods and whipping status and view the company account
+Inventory:this view enables the staff to view all shipping records and shipping statis
+Account:Enables the accounting staff to view all payments,update cost of shipping and view the company revenue
+Login :enables users to login 
+stafflogin:enables staff to login
+registration:enables the user to register 
+
+HOW THE SYSTEM WORKS
+-First install nodejs,mongodb and git bash
+-After installing mongodb create a folder in the installation path and name it data
+-Inside the data folder create another folder and name it db
+-Then open a command prompt and navigate to the folder where mongodb was installed and use the command "mongod" to get mongodb started(e.g cd program files\mongodb\server\3.2\bin)
+-if you are running a 32 bit system you will have to specify the storage engine and data path using this command...mongod --storageEngine=mmapv1 --dbpath="c:\program files\data\db"...(note you will replace the db path with the location of your data folder)
+-After mongodb is up and running Navigate to the folder where you unzipped the app and git bash there(this is assuming you already have gitbash installed ...
+right click on the folder you will see the git bash option) when you git bash a command prompt will pop up
+-in the command prompt that pops up type in the command("nodemon start") without the bracces wait a minute or two you will see a mesage that says your app is running on port 5000
+-go to your browser and type localhost:5000 you will be taken to the index page of the application.
+-From there you can register as a user or login to view the user or staff dashboard.
+-Use mask@gmail.com and password:12345678 as password to login to the admin panel from where you can create other staff(admin/account/inventory)account
+
+User DASHBORD
+The profile tab contains the user information which he/she can update
+-in the user dashboard the user can send a shipping request to the admin in the ship goods tab givving the required information.the request will be declined or approved by the
+admin and a message will be sent to the user in the messages tab.
+-when the shipping request is approved by the admin the user will be prompted to pay a specifed amount which can be done using card or bank payment ..
+-after payment the user can track the status of his/her goods in the track goods tab to see if the goods have been shipped aand when it will be delivered
+-Reciepts for payment can be printed for in the view transactio tab
+
+Admin DASHBOARD
+-The profile tab contains the admin info which can be updated
+-the view user and view staff tabs allow the admin to view user and staff information
+-the create staff tab allows the admin to create staff account specifyig thier departments
+-the view shipment requests tab allows the admin to view and decline or approve shpment requests
+-the track shipment tb allows the admin to track and update shipping details
+-the view account allows the admin to view the company revenue
+
+Inventory DASHBOARD
+profile:shows the staff info
+Track shipments:shows the latest information about shipments
+Shipments:Show information about all shipping requests recievwed by the company
+
+ACCOUNT DASCHBOARD
+Profile:shows staff information
+payment:Shows information about all the payment made to the company
+cost:tab for setting the shipping cost for weights in kg and tons
+Revenue:Shows the company revenue
+

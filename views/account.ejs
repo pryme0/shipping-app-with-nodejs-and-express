@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="description" content="online shiping app" />
+    <meta name="author" content="joseph oboci" />
+    <title>online shiping software</title>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
+    <!-- icons -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- bootstrap -->
+    <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- style -->
+    <link rel="stylesheet" href="/css/pages/extra_pages.css">
+    <!-- favicon -->
+</head>
+
+<body>
+    <div class="container">
+        <h2>Account Dashboard</h2>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#profile">Home</a></li>
+            <li><a data-toggle="tab" href="#payment">View payments</a></li>
+            <li><a data-toggle="tab" href="#cost">Cost of shipment</a></li>
+            <li><a data-toggle="tab" href="#revenue">View Company Revenue</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="profile" class="tab-pane fade in active">
+                <div class="well well-sm" style=" color:black">
+
+
+                    <form class=" form-horizontal" action="updateuser" method="POST">
+                        <div class=" form-group">
+                            <Label class="col-sm-2" for="firstname">Firstname</Label>
+                            <input class=" col-sm-8" type="text" name="firstname" value="<%= Staff.firstname%>">
+                        </div>
+                        <div class=" form-group">
+                            <Label class=" col-sm-2" for="lastname">Lastname</Label>
+                            <input class=" col-sm-8" type="text" name="lastname" value="<%= Staff.lastname%>">
+                        </div>
+                        <div class=" form-group">
+                            <Label class=" col-sm-2" for="email">Email</Label>
+                            <input class=" col-sm-8" type="text" name="email" value="<%= Staff.email%>">
+                        </div>
+                        <div class=" form-group">
+                            <Label class=" col-sm-2" for="phonenumber">Phonenumber</Label>
+                            <input class=" col-sm-8" type="text" name="phonenumber" value="<%= Staff.phonenumber%>">
+                        </div>
+                        <div class=" form-group">
+                            <button class=" btn btn-primary "> update</button>
+                        </div>
+                    </form>
+
+                    <form class="form" action="updatestaffpassword" method="POST">
+                        <h3>UPDATE PASSWORD</h3>
+                        <div class=" form-group">
+                            <input type="password" class="form-control" name="password" placeholder="enter new password">
+                        </div>
+                        <div class="form-group">
+                            <button class="form-control btn-danger">Update Password</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div id="payment" class="tab-pane fade">
+
+
+                <div class=" alert alert-danger ">
+                    <ul class="list-group">
+
+
+                        <li class=" list-unstyled text-danger" data-dismiss="alert" aria-label="close">
+                            <%= deletemess %>
+                        </li>
+
+
+
+                </div>
+
+
+                <table class="table table-condensed table-bordered table-striped">
+                    <thead>
+                        <tr style="color:black">
+                            <th>SN</th>
+                            <th>Name</th>
+                            <th>Payment Reference</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Quantity</th>
+                            <th>Payment status</th>
+                            <th>Date of Payment</th>
+
+                    </thead>
+                    <% let paycount = 1%>
+                        <% Payment.forEach(paye=>{%>
+
+
+                            <tbody style="color:black">
+                                <tr>
+                                    <td>
+                                        <%= paycount++ %>
+                                    </td>
+
+                                    <td>
+                                        <%= paye.payee.firstname + ' ' +  paye.payee.lastname  %>
+                                    </td>
+                                    <td>
+                                        <%= paye._id   %>
+                                    </td>
+                                    <td>
+                                        <%= paye.paymentfor   %>
+                                    </td>
+                                    <td>
+                                        <%= paye.amount  %>
+                                    </td>
+                                    <td>
+                                        <%= paye.quantity  %>
+                                    </td>
+                                    <td>
+                                        <%= paye.status  %>
+                                    </td>
+                                    <td>
+                                        <%= paye.date   %>
+                                    </td>
+
+                                    <td>
+                                        <button class=" btn btn-primary"> <a style="color: white;" href="/reciept/<%=paye._id %>">Print Reciept</a></button>
+                                    </td>
+
+
+
+                                </tr>
+                            </tbody>
+                            <% })%>
+                </table>
+
+            </div>
+
+            <div id="cost" class="tab-pane fade" style="color:black">
+                <% Price.forEach(pri=>{ %>
+                    <div class=" alert alert-danger ">
+                        <ul class="list-group">
+                            <li class=" list-unstyled text-danger" data-dismiss="alert" aria-label="close">
+                                <%= updateError %>
+                            </li>
+
+                    </div>
+
+                    <h3>Current cost of shipping</h3>
+                    <form class="form" method="POST" action="priceupdate">
+                        <div class=" form-group">
+                            <label class=" label-default" for="pricefortons">Cost of shipping in Tons</label>
+                            <input class=" form-control" type="text" name="pricefortons" value="<%=pri.pricefortons %>">
+                        </div>
+                        <div class=" form-group">
+                            <label class=" label-default" for="priceforkg">Cost of shipping in kg</label>
+                            <input class=" form-control" type="text" name="priceforkg" value="<%=pri.priceforkg%>">
+                        </div>
+                        <div class=" form-group">
+                            <button class=" btn btn-primary">update</button></div>
+
+                    </form>
+            </div>
+            <%})%>
+
+                <div id="revenue" class="tab-pane fade">
+                    <h3>Revenue</h3>
+                    <div>
+                        <h3>Total Revenue :&nbsp&nbsp
+                            <%= totalRevenue %>
+                        </h3>
+
+                    </div>
+                </div>
+
+
+        </div>
+    </div>
+
+
+
+    <!-- start js include path -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/js/pages/extra-pages/pages.js"></script>
+    <!-- end js include path -->
+</body>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+</html

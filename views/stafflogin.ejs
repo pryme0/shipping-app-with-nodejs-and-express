@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="description" content="Responsive Admin Template" />
+    <meta name="author" content="SmartUniversity" />
+    <title>online shiping software</title>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
+    <!-- icons -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- bootstrap -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- style -->
+    <link rel="stylesheet" href="/css/pages/extra_pages.css">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="http://radixtouch.in/templates/admin/smart/source/assets/img/favicon.ico" />
+</head>
+
+<body>
+
+    <!-- Login Form-->
+    <div class="login-form text-center">
+        <div class="toggle">
+        </div>
+        <div class="form formLogin">
+            <h2>Staff Login</h2>
+            <div class=" alert alert-danger ">
+                <%if(errors.length > 0 ){%>
+                    <ul class="list-group">
+
+                        <%errors.forEach(error=>{ %>
+
+                            <li class=" list-unstyled text-danger" data-dismiss="alert" aria-label="close">
+                                <%=error %>
+                            </li>
+
+                            <% })%>
+                                <% }%>
+
+            </div>
+            <form method="POST" action="stafflogin">
+                <input type="text" name="email" placeholder="email" />
+                <input type="password" name="password" placeholder="Password" />
+                <div class="remember text-left">
+                    <div class="checkbox checkbox-primary">
+                        <input id="checkbox2" type="checkbox" checked>
+                        <label for="checkbox2">
+                            Remember me
+                        </label>
+                    </div>
+                </div>
+                <button>Login</button>
+                <div class="forgetPassword"><a href="javascript:void(0)">Forgot your password?</a>
+                </div>
+            </form>
+        </div>
+        <div class="form formReset">
+            <h2>Reset your password?</h2>
+            <form>
+                <input type="email" placeholder="Email Address" />
+                <button>Send Verification Email</button>
+            </form>
+        </div>
+    </div>
+    <!-- start js include path -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+
+    <script src="/js/pages/extra-pages/pages.js"></script>
+    <!-- end js include path -->
+</body>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+</html>

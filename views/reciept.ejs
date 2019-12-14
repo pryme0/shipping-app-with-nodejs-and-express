@@ -1,0 +1,114 @@
+<html>
+
+<head>
+    <title>
+
+    </title>
+    <link rel=" stylesheet" type="style/css" href="/bootstrap2/css/bootstrap.min.css">
+</head>
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="description" content="online shiping app" />
+    <meta name="author" content="joseph oboci" />
+    <title>online shiping software</title>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
+    <!-- icons -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- bootstrap -->
+    <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- style -->
+    <link rel="stylesheet" href="/css/pages/extra_pages.css">
+    <!-- favicon -->
+</head>
+
+<body>
+    <div class=" container table-responsive " style=" background:white;color:black;margin:auto">
+        <h3 style=" text-align: center">Reciept of payment</h3>
+        <table class=" table " style=" border-style:none;">
+
+            <tbody>
+                <tr>
+                    <td>Name:</td>
+                    <td>
+                        <%= pay.payee.firstname  + ' ' + pay.payee.lastname %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Payment ID:</td>
+                    <td>
+                        <%= pay._id %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Payment for:</td>
+                    <td>
+                        <%= pay.paymentfor %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Type of goods:</td>
+                    <td>
+                        <%= pay.goods %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Quantity:</td>
+                    <td>
+                        <%= pay.quantity %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Amount Paid:</td>
+                    <td>
+                        <%= pay.amount %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Payment status:</td>
+                    <td>
+                        <%= pay.status %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>payment Method:</td>
+                    <td>
+                        <%= pay.paymentmethod %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date:</td>
+                    <td>
+                        <%= pay.date %>
+                    </td>
+                </tr>
+
+            </tbody>
+
+
+        </table>
+
+
+
+    </div>
+
+
+
+    <!-- start js include path -->
+    <script src="/plugins/jquery/jquery.min.js "></script>
+    <script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js "></script>
+    <script src="/js/pages/extra-pages/pages.js "></script>
+    <!-- end js include path -->
+</body>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+</html>

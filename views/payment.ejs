@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="description" content="online shiping app" />
+    <meta name="author" content="joseph oboci" />
+    <title>online shiping software</title>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
+    <!-- icons -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- bootstrap -->
+    <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- style -->
+    <link rel="stylesheet" href="/css/pages/extra_pages.css">
+    <!-- favicon -->
+</head>
+
+<body>
+    <div class="form-title">
+        <h1>Shipment Payment</h1>
+    </div>
+    <!-- Login Form-->
+    <div class="container">
+        <ul class="nav nav-pills nav-justified">
+            <li>
+                <a data-toggle="tab" href="#card">
+                    <h3 style="color:white">Pay With card</h3>
+                </a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#bank">
+                    <h3 style="color:white">Bank payment</h3>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class=" container">
+        <div class=" tab-content">
+            <div id="card" class=" tab-pane fade in " style="color:black">
+                <div class=" alert alert-danger ">
+
+                    <ul class="list-group">
+                        <li class=" list-unstyled text-danger" data-dismiss="alert" aria-label="close">
+                            <%= paymentError %>
+                        </li>
+
+
+
+                </div>
+
+                <form class=" form-horizontal" action="/payment" method="POST">
+                    <div class=" form-group">
+                        <input type="text" name="paymentmethod" value="Card payment" class=" col-sm-4">
+                    </div>
+                    <div class=" form-group">
+                        <input type=" text" name="name" value="<%= use.firstname + ' ' + use.lastname %>" class=" col-sm-4">
+                    </div>
+                    <div class=" form-group">
+                        <input type="text" name="email" value="<%= use.email %>" class=" col-sm-4">
+                    </div>
+                    <div class=" form-group">
+                        <input type="text" name="reason" value="<%= mess.description %>" class=" col-sm-4">
+                    </div>
+                    <div class=" form-group">
+                        <input type="text" name="amount" value="<%=mess.cost %>" class=" col-sm-4">
+                    </div>
+                    <div class=" form-group">
+                        <input type="text" name="cardnumber" class=" col-sm-4 borders" placeholder=" cardnumber">
+                        <span class="help-block">enter card number</span>
+                    </div>
+                    <div class=" form-group">
+                        <input type="text" name="cvv" class=" col-sm-4 borders" placeholder="cvv">
+                        <span class="help-block">enter number at the back of the card</span>
+                    </div>
+                    <div class=" form-group">
+                        <input type=" text" name="pin" class=" col-sm-1 borders" placeholder="pin">
+                        <span class="help-block">enter card pin</span>
+                    </div>
+
+                    <div class=" form-group">
+                        <button class=" btn btn-danger">Pay</button>
+                    </div>
+
+                </form>
+
+
+            </div>
+            <div id="bank" class=" tab-pane fade in ">
+                <h4>Use the refernce pin below to pay at the bank</h4>
+                <div class="table tabble-responsive">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h4>Name: </h4>
+                                </td>
+                                <td>
+                                    <h4>
+                                        <%= use.firstname +  '   ' + use.lastname %>
+                                    </h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4>Payment for: </h4>
+                                </td>
+                                <td>
+                                    <h4>
+                                        <%=mess.description  %>
+                                    </h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4>Amount: </h4>
+                                </td>
+                                <td>
+                                    <h4>
+                                        <%=mess.cost  %>
+                                    </h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4>Payment Reference: </h4>
+                                </td>
+                                <td>
+                                    <h4>
+                                        <%=mess.shipmentid  %>
+                                    </h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><button class=" btn btn-default">Print</button></td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="/plugins/jquery/jquery.min.js"></script>
+
+    <script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/js/pages/extra-pages/pages.js"></script>
+</body>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+</html>

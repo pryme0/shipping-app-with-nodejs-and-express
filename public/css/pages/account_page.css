@@ -1,0 +1,8 @@
+body {
+    background: linear-gradient(to bottom right, rgb(77, 116, 206), #46D7EA);
+    color: #fff;
+    font-family: 'RobotoDraft', 'Roboto', sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="description" content="online shiping app" />
+    <meta name="author" content="joseph oboci" />
+    <title>online shiping software</title>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
+    <!-- icons -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- bootstrap -->
+    <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- style -->
+    <link rel="stylesheet" href="/css/pages/extra_pages.css">
+    <!-- favicon -->
+</head>
+
+<body>
+    <div class="container">
+        <h2>Inventory</h2>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Profile</a></li>
+            <li><a data-toggle="tab" href="#store">Store</a></li>
+            <li><a data-toggle="tab" href="#track">Track Goods</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <div class="well well-sm" style=" color:black">
+
+
+
+                    <form class=" form-horizontal" action="updateuser" method="POST">
+                        <div class=" form-group">
+                            <Label class="col-sm-2" for="firstname">Firstname</Label>
+                            <input class=" col-sm-8" type="text" name="firstname" value="<%= Staff.firstname%>">
+                        </div>
+                        <div class=" form-group">
+                            <Label class=" col-sm-2" for="lastname">Lastname</Label>
+                            <input class=" col-sm-8" type="text" name="lastname" value="<%= Staff.lastname%>">
+                        </div>
+                        <div class=" form-group">
+                            <Label class=" col-sm-2" for="email">Email</Label>
+                            <input class=" col-sm-8" type="text" name="email" value="<%= Staff.email%>">
+                        </div>
+                        <div class=" form-group">
+                            <Label class=" col-sm-2" for="phonenumber">Phonenumber</Label>
+                            <input class=" col-sm-8" type="text" name="phonenumber" value="<%= Staff.phonenumber%>">
+                        </div>
+                        <div class=" form-group">
+                            <button class=" btn btn-primary "> update</button>
+                        </div>
+                    </form>
+
+                    <form class="form" action="updatestaffpassword" method="POST">
+                        <h3>UPDATE PASSWORD</h3>
+                        <div class=" form-group">
+                            <input type="password" class="form-control" name="password" placeholder="enter new password">
+                        </div>
+                        <div class="form-group">
+                            <button class="form-control btn-danger">Update Password</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+            <div id="store" class="tab-pane fade">
+
+
+                <div class=" alert alert-danger ">
+                    <ul class="list-group">
+
+
+                        <li class=" list-unstyled text-danger" data-dismiss="alert" aria-label="close">
+                            <%=  %>
+                        </li>
+
+
+
+                </div>
+
+
+                <table class="table table-condensed table-bordered table-striped">
+                    <thead>
+                        <tr style="color:black">
+                            <th>SN</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Goods</th>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th>Shipping From</th>
+                            <th>Destination</th>
+                            <th>Date</th>
+
+                    </thead>
+                    <% let paycount = 1%>
+                        <% Ship.forEach(shipment=>{%>
+
+
+                            <tbody style="color:black">
+                                <tr>
+                                    <td>
+                                        <%= paycount++ %>
+                                    </td>
+
+                                    <td>
+                                        <%= shipment.requester.firstname + ' ' +  shipment.requester.lastname  %>
+                                    </td>
+                                    <td>
+                                        <%= shipment.requester.email   %>
+                                    </td>
+                                    <td>
+                                        <%= shipment.requester.phonenumber  %>
+                                    </td>
+                                    <td>
+                                        <%= shipment.goods   %>
+                                    </td>
+                                    <td>
+                                        <%= shipment.description  %>
+                                    </td>
+
+                                    <td>
+                                        <%= shipment.quantity  %>
+                                    </td>
+                                    <td>
+                                        <%= shipment.shipfrom   %>
+                                    </td>
+
+                                    <td>
+                                        <%= shipment.destination   %>
+                                    </td>
+                                    <td>
+                                        <%= shipment.sentAt  %>
+                                    </td>
+
+                                    <td>
+                                        <button class=" btn btn-danger"> <a style="color: white;" href="/paymentdelete/<% %>">Delete</a></button>
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                            <% })%>
+                </table>
+
+
+            </div>
+            <div id="track" class="tab-pane fade">
+
+
+                <div class=" alert alert-danger ">
+                    <ul class="list-group">
+
+
+                        <li class=" list-unstyled text-danger" data-dismiss="alert" aria-label="close">
+                            <%=  %>
+                        </li>
+
+
+
+                </div>
+
+
+                <table class="table table-condensed table-bordered table-striped">
+                    <thead>
+                        <tr style="color:black">
+                            <th>SN</th>
+                            <th>Name</th>
+                            <th>Payment Reference</th>
+                            <th>Goods</th>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th>Shiping from</th>
+                            <th>Destination</th>
+                            <th>Ship Number</th>
+                            <th>Shipment Status</th>
+                            <th>Expected Delivery Date</th>
+                            <th>Current Location</th>
+                            <th>Delivery Status</th>
+
+
+                    </thead>
+                    <% let trackcount = 1%>
+                        <% Ship.forEach(shipment=>{%>
+
+
+                            <tbody style="color:black">
+                                <tr>
+                                    <td>
+                                        <%= trackcount++ %>
+                                    </td>
+
+                                    <td>
+                                        <%= shipment.requester.firstname + ' ' +  shipment.requester.lastname  %>
+                                    </td>
+                                    <td>
+                                        <%= shipment._id   %>
+                                    </td>
+                                    <td>
+                                        <%= shipment.goods   %>
+                                    </td>
+                                    <td>
+                                        <%= shipment.description  %>
+                                    </td>
+
+                                    <td>
+                                        <%= shipment.quantity  %>
+                                    </td>
+                                    <td>
+                                        <%= shipment.shipfrom   %>
+                                    </td>
+
+                                    <td>
+                                        <%= shipment.destination   %>
+                                    </td>
+                                    <td>
+                                        <%= shipment.Shipnumber   %>
+                                    </td>
+                                    <td>
+                                        <%= shipment.shipmentstatus   %>
+                                    </td>
+                                    <td>
+                                        <%= shipment.expecteddelivery   %>
+                                    </td>
+                                    <td>
+                                        <%= shipment.currentlocation   %>
+                                    </td>
+                                    <td>
+                                        <%= shipment.deliverystatus   %>
+                                    </td>
+                                    <td>
+                                        <button class=" btn btn-danger"> <a style="color: white;" href="/paymentdelete/<% %>">Delete</a></button>
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                            <% })%>
+                </table>
+
+
+            </div>
+
+            <div id="menu2" class="tab-pane fade">
+                <h3>Menu 2</h3>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+            </div>
+            <div id="menu3" class="tab-pane fade">
+                <h3>Menu 3</h3>
+                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- start js include path -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/js/pages/extra-pages/pages.js"></script>
+    <!-- end js include path -->
+</body>
+
+<!-- Mirrored from radixtouch.in/templates/admin/smart/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 16:40:57 GMT -->
+
+</html>
